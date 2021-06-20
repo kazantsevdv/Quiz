@@ -104,8 +104,6 @@ class QuizFragment : Fragment() {
             val bundle = Bundle()
             bundle.putInt(ID_QUIZ, idQuiz - 1)
             findNavController().navigate(R.id.quizFragment, bundle)
-        }else{
-            requireActivity().finish()
         }
     }
 
