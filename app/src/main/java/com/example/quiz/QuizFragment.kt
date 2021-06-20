@@ -33,6 +33,8 @@ class QuizFragment : Fragment() {
             this,  // LifecycleOwner
             callback
         )
+
+
     }
     override fun onCreateView(
         inflater: LayoutInflater,

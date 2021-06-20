@@ -3,6 +3,7 @@ package com.example.quiz
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -93,11 +94,16 @@ class SubmitFragment : Fragment() {
         val shareBody = sb.toString()
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Результат теста")
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
-        startActivity(Intent.createChooser(sharingIntent, "Share via"))
+        if (sharingIntent.resolveActivity(requireContext().packageManager) != null) {
+            startActivity(Intent.createChooser(sharingIntent, "Share via"))
+        } else {
+            Log.d("Intent", "Не получается обработать намерение!");
+        }
+
     }
 
     private fun doReset() {
-        quizRepo.forEach{it.userAnswer=-1}
+        quizRepo.forEach { it.userAnswer = -1 }
         val bundle = Bundle()
         bundle.putInt(QuizFragment.ID_QUIZ, 0)
 
