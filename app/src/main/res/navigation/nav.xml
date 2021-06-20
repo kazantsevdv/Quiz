@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav"
+    app:startDestination="@id/quizFragment">
+
+    <fragment
+        android:id="@+id/quizFragment"
+        android:name="com.example.quiz.QuizFragment"
+        android:label="QuizFragment" >
+        <argument
+            android:name="ID_QUIZ"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_quizFragment_self"
+            app:destination="@id/quizFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_quizFragment_to_submitFragment"
+            app:destination="@id/submitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/submitFragment"
+        android:name="com.example.quiz.SubmitFragment"
+        android:label="SubmitFragment" >
+        <action
+            android:id="@+id/action_submitFragment_to_quizFragment"
+            app:destination="@id/quizFragment" />
+        <action
+            android:id="@+id/action_submitFragment_to_quizFragment2"
+            app:destination="@id/quizFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
