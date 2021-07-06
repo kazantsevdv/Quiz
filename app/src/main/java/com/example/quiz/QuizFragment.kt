@@ -17,7 +17,7 @@ class QuizFragment : Fragment() {
     private val viewBinding get() = checkNotNull(_viewBinding)
     private var idQuiz: Int = -1
     private val quizRepo = QuizRepo.getQuiz()
-
+    private var idTheme = 0
 
 
     override fun onAttach(context: Context) {
@@ -45,6 +45,12 @@ class QuizFragment : Fragment() {
         val view = _viewBinding?.root
 
         idQuiz = arguments?.getInt(ID_QUIZ) ?: 0
+        idTheme = when(idQuiz%2) {
+            0 -> R.style.Theme_Quiz_First
+            1 -> R.style.Theme_Quiz_Second
+            else -> R.style.Theme_Quiz_First
+        }
+        activity?.setTheme(idTheme)
         return view
     }
 
